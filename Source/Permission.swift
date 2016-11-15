@@ -210,7 +210,12 @@ open class Permission: NSObject {
     open lazy var disabledAlert: PermissionAlert = {
         return DisabledAlert(permission: self)
     }()
-    
+  
+    /// The alert when the permission was denied.
+    open lazy var restrictedAlert: PermissionAlert = {
+      return RestrictedAlert(permission: self)
+    }()
+  
     internal var callback: Callback?
     
     internal var permissionSets: [PermissionSet] = []
@@ -245,6 +250,7 @@ open class Permission: NSObject {
         case .notDetermined: presentPrePermissionAlert ? prePermissionAlert.present() : requestAuthorization(callbacks)
         case .denied:        presentDeniedAlert ? deniedAlert.present() : callbacks(status)
         case .disabled:      presentDisabledAlert ? disabledAlert.present() : callbacks(status)
+        case .restricted:    restrictedAlert.present()
         }
     }
     

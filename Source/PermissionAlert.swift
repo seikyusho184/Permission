@@ -128,6 +128,16 @@ internal class DeniedAlert: PermissionAlert {
     }
 }
 
+internal class RestrictedAlert: PermissionAlert {
+  override init(permission: Permission) {
+    super.init(permission: permission)
+    
+    title   = "\(permission) is currently restricted"
+    message = "Please enable access to \(permission) in the Settings app."
+    cancel  = "OK"
+  }
+}
+
 internal class PrePermissionAlert: PermissionAlert {
     override var controller: UIAlertController {
         let controller = super.controller

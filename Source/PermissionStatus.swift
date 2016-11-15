@@ -26,6 +26,8 @@ public enum PermissionStatus: String {
     case authorized    = "Authorized"
     case denied        = "Denied"
     case disabled      = "Disabled"
+    case restricted    = "Restricted"
+
     case notDetermined = "Not Determined"
     
     internal init?(string: String?) {
