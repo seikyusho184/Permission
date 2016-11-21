@@ -211,7 +211,7 @@ open class Permission: NSObject {
         return DisabledAlert(permission: self)
     }()
   
-    /// The alert when the permission was denied.
+    /// The alert when the permission was restricted.
     open lazy var restrictedAlert: PermissionAlert = {
       return RestrictedAlert(permission: self)
     }()
